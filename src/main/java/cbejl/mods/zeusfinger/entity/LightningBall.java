@@ -4,6 +4,7 @@ import cbejl.mods.zeusfinger.init.EntitiesMI;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobSpawnType;
@@ -14,6 +15,7 @@ import net.minecraft.world.phys.HitResult;
 import org.jetbrains.annotations.NotNull;
 
 public class LightningBall extends AbstractArrow {
+    public final AnimationState spinAnimationState = new AnimationState();
 
     public LightningBall(EntityType<? extends LightningBall> entityType, Level level) {
         super(entityType, level);
@@ -37,6 +39,10 @@ public class LightningBall extends AbstractArrow {
     public void tick() {
         if(tickCount > 1200) {
             this.discard();
+        }
+
+        if(this.level().isClientSide() && !spinAnimationState.isStarted()) {
+            spinAnimationState.start(tickCount);
         }
 
         super.tick();

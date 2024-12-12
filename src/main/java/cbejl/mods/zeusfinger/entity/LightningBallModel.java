@@ -52,5 +52,7 @@ public class LightningBallModel<T extends LightningBall> extends HierarchicalMod
     @Override
     public void setupAnim(LightningBall entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.root().getAllParts().forEach(ModelPart::resetPose);
+
+        this.animate(entity.spinAnimationState, LightningBallAnimation.SPIN, ageInTicks, 1f);
     }
 }

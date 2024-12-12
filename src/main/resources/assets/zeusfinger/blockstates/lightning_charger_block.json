@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "zeusfinger:block/lightning_charger_block"
+    }
+  }
+}

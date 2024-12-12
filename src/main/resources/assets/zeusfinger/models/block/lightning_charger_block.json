@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "zeusfinger:block/lightning_charger_block"
+  }
+}
